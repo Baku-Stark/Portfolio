@@ -63,3 +63,26 @@ h1{
 /* footer{
   box-shadow: 0 -10px 50px var(--bg);
 } */
+
+/* Customização do Swiper para o tema Neon Cyan */
+.about-swiper .swiper-button-next,
+.about-swiper .swiper-button-prev {
+  color: var(--cyan-primary) !important;
+  transition: transform 0.2s ease;
+}
+
+.about-swiper .swiper-button-next:hover,
+.about-swiper .swiper-button-prev:hover {
+  transform: scale(1.2);
+}
+
+.about-swiper .swiper-pagination-bullet {
+  background: var(--text-muted) !important;
+  opacity: 0.5;
+}
+
+.about-swiper .swiper-pagination-bullet-active {
+  background: var(--cyan-primary) !important;
+  opacity: 1;
+  box-shadow: 0 0 10px var(--cyan-primary);
+}
