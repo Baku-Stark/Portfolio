@@ -24,39 +24,19 @@
   --glow-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0d1117;
-    --bg-surface: #161b22;
-    --border: #21262d;
-    --text: #f0f6fc;
-    --text-muted: #8b949e;
-    
-    --code-bg: #161b22;
-    --accent: var(--cyan-primary);
-    --accent-bg: var(--cyan-glow);
-    --accent-border: rgba(56, 189, 248, 0.5);
-    --social-bg: rgba(33, 38, 45, 0.7);
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
 @font-face{
 	font-family: 'Rancing Hard';
 	src: url("/fonts/RACING HARD.ttf") format('truetype');
 }
 
 /* === CSS RESET === */
-*,
+/* *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
+} */
 
 /* Basic HTML and Body rendering settings */
 html {
@@ -68,3 +48,18 @@ html {
 button {
   cursor: pointer;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--title-font);
+}
+
+h1{
+  font-size: 8rem;
+  font-weight: bold;
+  text-align: center;
+  /* color: var(--cyan-primary); */
+}
+
+/* footer{
+  box-shadow: 0 -10px 50px var(--bg);
+} */
