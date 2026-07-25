@@ -48,7 +48,7 @@ export const Footer = () => {
           </a>
 
           <a
-            href="#"
+            href="https://www.linkedin.com/in/wallace-freitas-92a2061b6/"
             className={style.icon_style}
             aria-label="LinkedIn (imita o Bē)"
             target="_blank">
