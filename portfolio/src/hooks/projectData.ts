@@ -39,11 +39,12 @@ export const projectsData: Project[] = [
     },
     {
       id: '04',
-      title: 'Academic Project - QR Pede',
-      description: 'Developed as my first academic project at Jala University, this system enables customers to place orders with automated QR code generation, item verification, total calculation, and payment processing. The React frontend manages order states and uses media queries for full responsiveness across devices (TVs, desktops, tablets, and smartphones), while the Spring Boot backend handles authentication, QR code logic, payment processing, and transaction confirmations.',
+      title: 'Truth Table',
+      description: 'A web application for generating truth tables, developed with Vue.js. The backend is responsible for interpreting and evaluating user-provided Boolean expressions. It dynamically generates the truth table based on the variables identified in the expression.',
       category: 'fullstack',
-      tags: ['Spring Boot', 'MySQL', 'ReactJS'],
-      githubUrl: '#',
+      tags: ['TypeScript', 'Vue', 'Node.js'],
+      githubUrl: 'https://github.com/Baku-Stark/Truth_Table',
+      demoUrl: 'https://truth-table-six.vercel.app/',
       isFeatured: true,
     },
     {
@@ -82,5 +83,14 @@ export const projectsData: Project[] = [
         tags: ['TypeScript', 'GitLab CI/CD'],
         githubUrl: '#',
         isFeatured: true,
+    },
+    {
+        id: '09',
+        title: 'Academic Project - Tic-Tac-Toe Game',
+        description: 'A distributed multiplayer Tic-Tac-Toe application built with client-server architecture. It features real-time communication via WebSockets for gameplay, REST APIs for user management, and OAuth2 security. The system handles game state logic, player authentication, and match history persistence.',
+        category: 'networks',
+        tags: ['Java', 'Spring Boot', 'PostgreSQL','WebSocket', 'OAuth2'],
+        githubUrl: '#',
+        isFeatured: true,
     }
-  ];
+];
