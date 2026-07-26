@@ -4,39 +4,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
-// Padrão de Cores Unificado Cyan & Dark para todos os Shields.io
-// Background Dark (0E1726) + Cyan Neon (38BDF8)
-const BADGE_URLS: Record<string, string> = {
-  // Languages & Core
-  Python: 'https://img.shields.io/badge/Python-0E1726?style=for-the-badge&logo=python&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  JavaScript: 'https://img.shields.io/badge/JavaScript-0E1726?style=for-the-badge&logo=javascript&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  TypeScript: 'https://img.shields.io/badge/TypeScript-0E1726?style=for-the-badge&logo=typescript&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  Java: 'https://img.shields.io/badge/Java-0E1726?style=for-the-badge&logo=openjdk&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  'C++': 'https://img.shields.io/badge/C++-0E1726?style=for-the-badge&logo=c%2B%2B&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  '.NET': 'https://img.shields.io/badge/.NET-0E1726?style=for-the-badge&logo=dotnet&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  
-  // Frontend
-  ReactJS: 'https://img.shields.io/badge/React-0E1726?style=for-the-badge&logo=react&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  Angular: 'https://img.shields.io/badge/Angular-0E1726?style=for-the-badge&logo=angular&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  Vue: 'https://img.shields.io/badge/Vue.js-0E1726?style=for-the-badge&logo=vuedotjs&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  'React Native': 'https://img.shields.io/badge/React_Native-0E1726?style=for-the-badge&logo=react&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  SASS: 'https://img.shields.io/badge/Sass-0E1726?style=for-the-badge&logo=sass&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  'Tailwind CSS': 'https://img.shields.io/badge/Tailwind_CSS-0E1726?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-
-  // Backend & Databases
-  'Node.js': 'https://img.shields.io/badge/Node.js-0E1726?style=for-the-badge&logo=nodedotjs&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  'Spring Boot': 'https://img.shields.io/badge/Spring_Boot-0E1726?style=for-the-badge&logo=springboot&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  PostgreSQL: 'https://img.shields.io/badge/PostgreSQL-0E1726?style=for-the-badge&logo=postgresql&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  MySQL: 'https://img.shields.io/badge/MySQL-0E1726?style=for-the-badge&logo=mysql&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  MongoDB: 'https://img.shields.io/badge/MongoDB-0E1726?style=for-the-badge&logo=mongodb&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  Redis: 'https://img.shields.io/badge/Redis-0E1726?style=for-the-badge&logo=redis&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  Cassandra: 'https://img.shields.io/badge/Cassandra-0E1726?style=for-the-badge&logo=apachecassandra&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-
-  // Cybersecurity / Linux
-  'Kali Linux': 'https://img.shields.io/badge/Kali_Linux-0E1726?style=for-the-badge&logo=kalilinux&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-  Parrot: 'https://img.shields.io/badge/Parrot_OS-0E1726?style=for-the-badge&logo=parrotsecurity&logoColor=38BDF8&labelColor=0E1726&color=38BDF8',
-};
+import { BADGE_URLS } from '../hooks/badgeUrls';
 
 export function About() {
   const slidesContent = [
@@ -80,18 +48,18 @@ export function About() {
   return (
     <section id="about" className="w-full min-h-screen bg-(--bg) text-white py-20 px-6 flex flex-col items-center justify-center relative overflow-hidden">
       
-      {/* Título da Section */}
+      {/* Section Title */}
       <div className="flex flex-col items-center gap-2 mb-12 text-center">
         <span className="text-(--cyan-primary) font-mono text-sm tracking-widest uppercase">
           01. Discover More
         </span>
-        <h2 className="text-3xl md:text-5xl font-bold font-(--title-font) tracking-wide">
+        <h2 className="text-3xl md:text-5xl font-(--title-font) tracking-wide">
           About Me
         </h2>
         <div className="w-16 h-[2px] bg-(--cyan-primary) shadow-[0_0_10px_var(--cyan-primary)] mt-2" />
       </div>
 
-      {/* Container do Slide */}
+      {/* Slide Container */}
       <div className="w-full max-w-4xl mx-auto">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
@@ -112,7 +80,7 @@ export function About() {
                   {slide.id}
                 </span>
 
-                {/* Cabeçalho do Card */}
+                {/* Footer Card */}
                 <div>
                   <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">
                     {slide.title}
@@ -122,7 +90,7 @@ export function About() {
                   </p>
                 </div>
 
-                {/* Conteúdo em Texto */}
+                {/* Text Content */}
                 <p className="text-zinc-300 text-base md:text-lg leading-relaxed">
                   {slide.text}
                 </p>
