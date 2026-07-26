@@ -3,12 +3,30 @@ import { BADGE_URLS } from '../hooks/badgeUrls';
 import { projectsData } from '../hooks/projectData';
 
 export function Projects() {
-  const [activeFilter, setActiveFilter] = useState<'all' | 'fullstack' | 'frontend' | 'backend' | 'security'>('all');
+  // Alterado a tipagem do filtro para incluir 'networks' e 'devops'
+  type FilterCategory = 'all' | 'fullstack' | 'frontend' | 'backend' | 'security' | 'networks' | 'devops';
+
+  const [activeFilter, setActiveFilter] = useState<FilterCategory>('all');
+  const [showAll, setShowAll] = useState(false);
+
+  // Visible Card Limit
+  const INITIAL_LIMIT = 4;
 
   // Filters projects by the selected category.
   const filteredProjects = activeFilter === 'all'
     ? projectsData
     : projectsData.filter((project) => project.category === activeFilter);
+
+  // Defines the projects to be displayed according to the slice limit.
+  const visibleProjects = showAll 
+    ? filteredProjects 
+    : filteredProjects.slice(0, INITIAL_LIMIT);
+
+  // Resets "showAll" when the user changes the filter.
+  const handleFilterChange = (category: FilterCategory) => {
+    setActiveFilter(category);
+    setShowAll(false);
+  };
 
   return (
     <section id="projects" className="w-full min-h-screen bg-(--bg) text-white py-20 px-6 flex flex-col items-center justify-center relative">
@@ -24,7 +42,7 @@ export function Projects() {
         <div className="w-16 h-[2px] bg-(--cyan-primary) shadow-[0_0_10px_var(--cyan-primary)] mt-2" />
       </div>
 
-      {/* FILTER BUTTON */}
+      {/* FILTER BUTTONS */}
       <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
         {[
           { label: 'All', value: 'all' },
@@ -37,7 +55,7 @@ export function Projects() {
         ].map((filter) => (
           <button
             key={filter.value}
-            onClick={() => setActiveFilter(filter.value as typeof activeFilter)}
+            onClick={() => handleFilterChange(filter.value as FilterCategory)}
             className={`
               px-4 py-2 rounded-xl text-sm font-mono transition-all duration-300 border
               ${activeFilter === filter.value
@@ -53,7 +71,7 @@ export function Projects() {
 
       {/* Project Card Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
-        {filteredProjects.map((project) => {
+        {visibleProjects.map((project) => {
           const isRestricted = project.githubUrl === '#';
 
           return (
@@ -64,12 +82,12 @@ export function Projects() {
               {/* Card Top */}
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  {/* Folder / Terminal Icon */}
+                  {/* Terminal Icon */}
                   <div className="text-(--cyan-primary) text-2xl font-mono font-bold">
                     &#x203A;_
                   </div>
 
-                  {/* IMPORTANT: Highlight or Restriction Badge */}
+                  {/* Highlight or Restriction Badge */}
                   {isRestricted ? (
                     <span className="px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-full text-xs font-mono flex items-center gap-1.5">
                       <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
@@ -87,7 +105,7 @@ export function Projects() {
                 </div>
 
                 {/* PROJECT TITLE */}
-                <h3 className="text-xl md:text-2xl text-white group-hover:text-(--cyan-primary) transition-colors mb-3 ">
+                <h3 className="text-xl md:text-2xl text-white group-hover:text-(--cyan-primary) transition-colors mb-3">
                   {project.title}
                 </h3>
 
@@ -121,7 +139,7 @@ export function Projects() {
                   })}
                 </div>
 
-                {/* Action Buttons (GitHub & Live Demo)) */}
+                {/* Action Buttons */}
                 <div className="flex items-center gap-4 pt-2">
                   {isRestricted ? (
                     <span
@@ -166,6 +184,28 @@ export function Projects() {
           );
         })}
       </div>
+
+      {/* SHOW MORE / SHOW LESS BUTTON */}
+      {filteredProjects.length > INITIAL_LIMIT && (
+        <div className="mt-12">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="px-6 py-3 rounded-xl font-mono text-sm border border-(--cyan-primary) text-(--cyan-primary) bg-(--cyan-primary)/5 hover:bg-(--cyan-primary)/20 hover:shadow-[0_0_15px_var(--cyan-primary)] transition-all duration-300 flex items-center gap-2"
+          >
+            {showAll ? 'Show Less' : 'Show More'}
+            <svg
+              className={`w-4 h-4 transform transition-transform duration-300 ${
+                showAll ? 'rotate-180' : 'rotate-0'
+              }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+      )}
 
     </section>
   );
