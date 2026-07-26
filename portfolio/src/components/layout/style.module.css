@@ -1,0 +1,63 @@
+@reference "../../index.css";
+
+.icon_style{
+    @apply hover:text-(--cyan-primary) transition-colors text-2xl;
+}
+
+.landing_bg {
+  background-image: url('/images/landing.webp');
+}
+
+@reference "../../index.css";
+
+/* ... suas outras classes (landing_bg, etc) ... */
+
+/* === EFEITO GLITCH TECNOLÓGICO === */
+.glitch_title {
+  position: relative;
+  display: inline-block;
+}
+
+/* Pseudo-elementos que criam as camadas duplicadas de cor */
+.glitch_title::before,
+.glitch_title::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: inset(50% 0 0 0);
+}
+
+/* Camada Cyan / Azul Tecnológico */
+.glitch_title::before {
+  left: -2px;
+  text-shadow: 2px 0 var(--cyan-primary, #f83838);
+  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+/* Camada Vermelha / Neon Rose */
+.glitch_title::after {
+  left: 2px;
+  text-shadow: -2px 0 #3feef4;
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+/* Keyframes de corte rápido (Glitches) */
+@keyframes glitch-anim-1 {
+  0% { clip-path: inset(20% 0 60% 0); transform: skew(0.3deg); }
+  20% { clip-path: inset(80% 0 5% 0); transform: skew(-0.5deg); }
+  40% { clip-path: inset(10% 0 80% 0); transform: skew(0.8deg); }
+  60% { clip-path: inset(40% 0 30% 0); transform: skew(-0.2deg); }
+  80% { clip-path: inset(70% 0 10% 0); transform: skew(0.5deg); }
+  100% { clip-path: inset(0% 0 90% 0); transform: skew(-0.3deg); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip-path: inset(70% 0 10% 0); transform: skew(-0.4deg); }
+  25% { clip-path: inset(15% 0 65% 0); transform: skew(0.6deg); }
+  50% { clip-path: inset(50% 0 35% 0); transform: skew(-0.8deg); }
+  75% { clip-path: inset(5% 0 85% 0); transform: skew(0.3deg); }
+  100% { clip-path: inset(85% 0 5% 0); transform: skew(-0.5deg); }
+}
