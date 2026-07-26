@@ -12,23 +12,24 @@ export function LandingPage() {
     <section className={`${style.landing_bg} relative w-full h-screen bg-cover bg-center bg-fixed`}>
       <div className="absolute inset-0 w-full h-full bg-(--bg)/75 backdrop-blur-md flex flex-col items-center justify-center gap-6 px-4">
         
-        {/* Título com Glitch */}
+        {/* Glitch Title */}
         <h1 
           data-text="Welcome to My Portfolio"
           className={`
             ${style.glitch_title} 
-            text-4xl md:text-6xl 
+            text-2xl sm:text-4xl md:text-5xl lg:text-6xl 
             font-(--title-font)
             text-white 
             text-center 
             tracking-wider 
             drop-shadow-[0_0_25px_var(--cyan-glow,#38bdf840)]
+            w-full max-w-4xl px-2 leading-tight
           `}
         >
           Welcome to My Portfolio
         </h1>
 
-        {/* Efeito de Digitação */}
+        {/* Typing Effect (UPDATE NEW MODEL) */}
         <div className="min-h-[56px] flex items-center justify-center max-w-2xl">
           <p className="text-zinc-300 text-lg md:text-xl text-center opacity-75">
             {typedText}
