@@ -31,7 +31,7 @@ export function Projects() {
   return (
     <section id="projects" className="w-full min-h-screen bg-(--bg) text-white py-20 px-6 flex flex-col items-center justify-center relative">
       
-      {/* Cabeçalho da Seção */}
+      {/* Header Section */}
       <div className="flex flex-col items-center gap-2 mb-10 text-center">
         <span className="text-(--cyan-primary) font-mono text-sm tracking-widest uppercase">
           02. What I've Built
