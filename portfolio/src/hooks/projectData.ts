@@ -68,7 +68,7 @@ export const projectsData: Project[] = [
     },
     {
         id: '07',
-        title: 'Academic Project - Qatu (DevOps Pipeline)',
+        title: 'Academic Project - HirePro (DevOps Pipeline)',
         description: 'A full-stack web application integrated with an automated DevOps pipeline built for Jala University. Includes React/Vite frontend, Spring Boot backend, and PostgreSQL database. Features GitLab CI/CD automation, unit testing, static code analysis with SonarQube, multi-stage Docker containerization, GitLab Image Registry versioning, and automated remote deployment using Ansible.',
         category: 'devops',
         tags: ['Docker', 'Spring Boot', 'PostgreSQL', 'GitLab CI/CD', 'SonarQube'],
