@@ -1,28 +1,24 @@
 import { useState } from 'react';
 import { BADGE_URLS } from '../hooks/badgeUrls';
 import { projectsData } from '../hooks/projectData';
+import { ShowMoreButton } from '../components/ui/ShowMoreButton';
 
 export function Projects() {
-  // Alterado a tipagem do filtro para incluir 'networks' e 'devops'
   type FilterCategory = 'all' | 'fullstack' | 'frontend' | 'backend' | 'security' | 'networks' | 'devops';
 
   const [activeFilter, setActiveFilter] = useState<FilterCategory>('all');
   const [showAll, setShowAll] = useState(false);
 
-  // Visible Card Limit
   const INITIAL_LIMIT = 4;
 
-  // Filters projects by the selected category.
   const filteredProjects = activeFilter === 'all'
     ? projectsData
     : projectsData.filter((project) => project.category === activeFilter);
 
-  // Defines the projects to be displayed according to the slice limit.
   const visibleProjects = showAll 
     ? filteredProjects 
     : filteredProjects.slice(0, INITIAL_LIMIT);
 
-  // Resets "showAll" when the user changes the filter.
   const handleFilterChange = (category: FilterCategory) => {
     setActiveFilter(category);
     setShowAll(false);
@@ -82,12 +78,10 @@ export function Projects() {
               {/* Card Top */}
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  {/* Terminal Icon */}
                   <div className="text-(--cyan-primary) text-2xl font-mono font-bold">
                     &#x203A;_
                   </div>
 
-                  {/* Highlight or Restriction Badge */}
                   {isRestricted ? (
                     <span className="px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-full text-xs font-mono flex items-center gap-1.5">
                       <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
@@ -104,20 +98,17 @@ export function Projects() {
                   )}
                 </div>
 
-                {/* PROJECT TITLE */}
                 <h3 className="text-xl md:text-2xl text-white group-hover:text-(--cyan-primary) transition-colors mb-3">
                   {project.title}
                 </h3>
 
-                {/* DESCRIPTION */}
                 <p className="text-zinc-300 text-sm md:text-base leading-relaxed text-justify">
                   {project.description}
                 </p>
               </div>
 
-              {/* Card Footer: Badges + Links */}
+              {/* Card Footer */}
               <div className="flex flex-col gap-4 pt-4 border-t border-(--border)/60">
-                {/* Badges de Tecnologia */}
                 <div className="flex flex-wrap items-center gap-2">
                   {project.tags.map((tag, idx) => {
                     const badgeUrl = BADGE_URLS[tag];
@@ -139,7 +130,6 @@ export function Projects() {
                   })}
                 </div>
 
-                {/* Action Buttons */}
                 <div className="flex items-center gap-4 pt-2">
                   {isRestricted ? (
                     <span
@@ -185,26 +175,12 @@ export function Projects() {
         })}
       </div>
 
-      {/* SHOW MORE / SHOW LESS BUTTON */}
+      {/* REUSABLE SHOW MORE / SHOW LESS BUTTON */}
       {filteredProjects.length > INITIAL_LIMIT && (
-        <div className="mt-12">
-          <button
-            onClick={() => setShowAll(!showAll)}
-            className="px-6 py-3 rounded-xl font-mono text-sm border border-(--cyan-primary) text-(--cyan-primary) bg-(--cyan-primary)/5 hover:bg-(--cyan-primary)/20 hover:shadow-[0_0_15px_var(--cyan-primary)] transition-all duration-300 flex items-center gap-2"
-          >
-            {showAll ? 'Show Less' : 'Show More'}
-            <svg
-              className={`w-4 h-4 transform transition-transform duration-300 ${
-                showAll ? 'rotate-180' : 'rotate-0'
-              }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-        </div>
+        <ShowMoreButton
+          isExpanded={showAll}
+          onClick={() => setShowAll(!showAll)}
+        />
       )}
 
     </section>
