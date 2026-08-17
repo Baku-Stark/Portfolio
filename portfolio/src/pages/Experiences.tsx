@@ -1,9 +1,17 @@
 import { useState } from 'react';
 import { BADGE_URLS } from '../hooks/badgeUrls';
-import { experiencesData } from '../hooks/experienceData';
+import { experiencesData } from '../data/experienceData';
+import { useLanguage } from '../context/LanguageContext';
 
 export function Experiences() {
+  const { language, t } = useLanguage();
   const [activeTab, setActiveTab] = useState<string>(experiencesData[0]?.id || '');
+
+  const typeTranslations: Record<string, string> = {
+    Work: t('Work', 'Trabalho'),
+    Academic: t('Academic', 'Acadêmico'),
+    Leadership: t('Leadership', 'Liderança'),
+  };
 
   return (
     <section id="experiences" className="w-full min-h-screen bg-(--bg) text-white py-20 px-6 flex flex-col items-center justify-center relative">
@@ -11,17 +19,17 @@ export function Experiences() {
       {/* SECTION Header */}
       <div className="flex flex-col items-center gap-2 mb-16 text-center">
         <span className="text-(--cyan-primary) font-mono text-sm tracking-widest uppercase">
-          03. Where I've Worked & Learned
+          {t("03. Where I've Worked & Learned", '03. Onde Trabalhei e Aprendi')}
         </span>
         <h2 className="text-3xl md:text-5xl tracking-wide">
-          Experiences
+          {t('Experiences', 'Experiências')}
         </h2>
         <div className="w-16 h-[2px] bg-(--cyan-primary) shadow-[0_0_10px_var(--cyan-primary)] mt-2" />
       </div>
 
       <div className="w-full max-w-4xl flex flex-col md:flex-row gap-8">
         
-        {/* SIDE NAVIGATION (Tabs for Desktop / Scroll for Mobile) */}
+        {/* SIDE NAVIGATION */}
         <div className="flex md:flex-col overflow-x-auto md:overflow-visible border-b md:border-b-0 md:border-l border-(--border) min-w-[200px]">
           {experiencesData.map((exp) => {
             const isActive = activeTab === exp.id;
@@ -54,10 +62,10 @@ export function Experiences() {
                 <div>
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
                     <h3 className="text-xl md:text-2xl text-white font-semibold">
-                      {exp.role} <span className="text-(--cyan-primary)">@ {exp.company}</span>
+                      {exp.role[language]} <span className="text-(--cyan-primary)">@ {exp.company}</span>
                     </h3>
                     <span className="px-3 py-1 bg-(--cyan-primary)/10 border border-(--cyan-primary)/30 text-(--cyan-primary) rounded-full text-xs font-mono">
-                      {exp.type}
+                      {typeTranslations[exp.type] || exp.type}
                     </span>
                   </div>
                   
@@ -68,7 +76,7 @@ export function Experiences() {
 
                 {/* Bullets de Conquistas/Responsabilidades */}
                 <ul className="space-y-3">
-                  {exp.description.map((item, idx) => (
+                  {exp.description[language].map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-zinc-300 text-sm md:text-base leading-relaxed">
                       <span className="text-(--cyan-primary) font-mono mt-1">›</span>
                       <span>{item}</span>
