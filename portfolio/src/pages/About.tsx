@@ -1,47 +1,74 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { useLanguage } from '../context/LanguageContext';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-//import { BADGE_URLS } from '../hooks/badgeUrls';
 
 export function About() {
+  const { language, t } = useLanguage();
+
   const slidesContent = [
     {
       id: '01',
-      title: 'WHO I AM?',
-      subtitle: "Full Stack Developer & Software Engineer | Pentester | Python | Node.js | TypeScript | Java | Spring",
-      text: "I’m Wallace de Freitas (Baku-Stark). I’m passionate about creating modern interfaces, clean code, and robust frontend & backend architectures. I enjoy transforming ideas into seamless, scalable, and secure digital experiences.",
-      // tags: ['TypeScript', 'Java', 'Python', '.NET', 'C++', 'JavaScript'],
+      title: t('WHO I AM', 'QUEM SOU EU'),
+      subtitle: t(
+        'Full Stack Developer & Software Engineer | Pentester | Python | Node.js | TypeScript | Java | Spring',
+        'Desenvolvedor Full Stack & Engenheiro de Software | Pentester | Python | Node.js | TypeScript | Java | Spring'
+      ),
+      text: t(
+        'I’m Wallace de Freitas (Baku-Stark). I’m passionate about creating modern interfaces, clean code, and robust frontend & backend architectures. I enjoy transforming ideas into seamless, scalable, and secure digital experiences.',
+        'Sou Wallace de Freitas (Baku-Stark). Sou apaixonado por criar interfaces modernas, código limpo e arquiteturas robustas de frontend e backend. Gosto de transformar ideias em experiências digitais fluidas, escaláveis e seguras.'
+      ),
     },
     {
       id: '02',
-      title: 'FRONTEND ENGINEERING',
-      subtitle: 'Interactive, Responsive & High-Performance Interfaces',
-      text: 'Extensive experience in developing modern Web Interfaces focused on user experience (UX/UI), state management, and performance optimization. Skilled in crafting scalable design systems using Tailwind CSS, reusability with React, Vue, Angular, React Native and SASS.',
-      //tags: ['ReactJS', 'Angular', 'Vue', 'React Native', 'TypeScript', 'Tailwind CSS', 'SASS'],
+      title: t('FRONTEND DEVELOPER', 'DESENVOLVEDOR FRONTEND'),
+      subtitle: t(
+        'Interactive, Responsive & High-Performance Interfaces',
+        'Interfaces Interativas, Responsivas e de Alta Performance'
+      ),
+      text: t(
+        'Extensive experience in developing modern Web Interfaces focused on user experience (UX/UI), state management, and performance optimization. Skilled in crafting scalable design systems using Tailwind CSS, reusability with React, Vue, Angular, React Native and SASS.',
+        'Extensa experiência no desenvolvimento de interfaces Web modernas focadas em experiência do usuário (UX/UI), gerenciamento de estado e otimização de performance. Habilidade em criar design systems escaláveis usando Tailwind CSS, reuso de componentes com React, Vue, Angular, React Native e SASS.'
+      ),
     },
     {
       id: '03',
-      title: 'BACKEND & INFRASTRUCTURE',
-      subtitle: 'Scalable Systems, Microservices & REST APIs',
-      text: 'Solid background building secure, high-concurrency server-side applications and RESTful APIs. Proficient in Node.js, Express, Java (Spring Boot), Python, and .NET. Experience managing relational and NoSQL databases like PostgreSQL, MySQL, Redis and Cassandra.',
-      //tags: ['Node.js', 'Java', 'Spring Boot', 'Python', '.NET', 'PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Cassandra'],
+      title: t('BACKEND & INFRASTRUCTURE', 'BACKEND & INFRAESTRUTURA'),
+      subtitle: t(
+        'Scalable Systems, Microservices & REST APIs',
+        'Sistemas Escaláveis, Microserviços e APIs REST'
+      ),
+      text: t(
+        'Solid background building secure, high-concurrency server-side applications and RESTful APIs. Proficient in Node.js, Express, Java (Spring Boot), Python, and .NET. Experience managing relational and NoSQL databases like PostgreSQL, MySQL, Redis and Cassandra.',
+        'Sólida bagagem na construção de aplicações server-side seguras, de alta concorrência e APIs RESTful. Proficiente em Node.js, Express, Java (Spring Boot), Python e .NET. Experiência no gerenciamento de bancos de dados relacionais e NoSQL como PostgreSQL, MySQL, Redis e Cassandra.'
+      ),
     },
     {
       id: '04',
-      title: 'CYBERSECURITY & PENTEST',
-      subtitle: 'Security-First Development & Ethical Hacking',
-      text: 'Passion for offensive security, application auditing, and vulnerability assessment. Experienced with dedicated Linux distros for penetration testing, applying OWASP Top 10 guidelines to build resilient systems.',
-      //tags: ['Kali Linux', 'Parrot', 'Python', 'C++', 'JavaScript'],
+      title: t('CYBERSECURITY & PENTEST', 'CIBERSEGURANCA & PENTEST'),
+      subtitle: t(
+        'Security-First Development & Ethical Hacking',
+        'Desenvolvimento Focado em Segurança e Hacking Ético'
+      ),
+      text: t(
+        'Passion for offensive security, application auditing, and vulnerability assessment. Experienced with dedicated Linux distros for penetration testing, applying OWASP Top 10 guidelines to build resilient systems.',
+        'Paixão por segurança ofensiva, auditoria de aplicações e análise de vulnerabilidades. Experiência com distribuições Linux dedicadas a testes de intrusão, aplicando diretrizes do OWASP Top 10 para construir sistemas resilientes.'
+      ),
     },
     {
       id: '05',
-      title: 'GOALS & VISION',
-      subtitle: 'Continuous Evolution & High Impact',
-      text: 'Always seeking challenging opportunities to build high-impact products, balancing technical expertise with strong interpersonal collaboration to continuously grow as a complete software engineer.',
-      //tags: ['Soft Skills', 'Hard Skills', 'TypeScript', 'Java', 'Python', '.NET'],
+      title: t('GOALS & VISION', 'OBJETIVOS & VISAO'),
+      subtitle: t(
+        'Continuous Evolution & High Impact',
+        'Evolução Contínua e Alto Impacto'
+      ),
+      text: t(
+        'Always seeking challenging opportunities to build high-impact products, balancing technical expertise with strong interpersonal collaboration to continuously grow as a complete software engineer.',
+        'Sempre em busca de oportunidades desafiadoras para construir produtos de alto impacto, equilibrando expertise técnica com forte colaboração interpessoal para evoluir continuamente como um engenheiro de software completo.'
+      ),
     },
   ];
 
@@ -51,10 +78,10 @@ export function About() {
       {/* Section Title */}
       <div className="flex flex-col items-center gap-2 mb-12 text-center">
         <span className="text-(--cyan-primary) font-mono text-sm tracking-widest uppercase">
-          01. Discover More
+          {t('01. Discover More', '01. Descubra Mais')}
         </span>
         <h2 className="text-3xl md:text-5xl font-(--title-font) tracking-wide">
-          About Me
+          {t('About Me', 'Sobre Mim')}
         </h2>
         <div className="w-16 h-[2px] bg-(--cyan-primary) shadow-[0_0_10px_var(--cyan-primary)] mt-2" />
       </div>
@@ -62,6 +89,7 @@ export function About() {
       {/* Slide Container */}
       <div className="w-full max-w-4xl mx-auto">
         <Swiper
+          key={language} // Força o re-render do Swiper ao trocar de idioma
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={30}
           slidesPerView={1}
@@ -94,34 +122,6 @@ export function About() {
                 <p className="text-zinc-300 text-base md:text-lg leading-relaxed">
                   {slide.text}
                 </p>
-
-                {/* Renderização das Badges dos Shields */}
-                {/* <div className="flex flex-wrap items-center gap-2 pt-4">
-                  {slide.tags.map((tag, idx) => {
-                    const badgeUrl = BADGE_URLS[tag];
-
-                    if (badgeUrl) {
-                      return (
-                        <img
-                          key={idx}
-                          src={badgeUrl}
-                          alt={`${tag} badge`}
-                          className="h-7 rounded-md border border-(--border) hover:border-(--cyan-primary)/60 hover:scale-105 transition-all duration-200 shadow-md"
-                        />
-                      );
-                    }
-
-                    // Fallback para Soft/Hard skills ou tags sem logo estático
-                    return (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 bg-(--bg) border border-(--border) rounded-full text-xs font-mono text-zinc-300 hover:text-(--cyan-primary) hover:border-(--cyan-primary)/40 transition-colors"
-                      >
-                        #{tag}
-                      </span>
-                    );
-                  })}
-                </div> */}
 
               </div>
             </SwiperSlide>
