@@ -1,9 +1,11 @@
+import { useLanguage } from '../../context/LanguageContext';
 import { useTypingEffect } from '../../hooks/userTypingEffect';
 import style from './style.module.css';
 
 export function LandingPage() {
+  const { t } = useLanguage();
   const typedText = useTypingEffect(
-    `I'm Wallace de Freitas, also known as Baku-Stark!`,
+    t(`I'm Wallace de Freitas, also known as Baku-Stark!`, 'Eu sou Wallace de Freitas, conhecido como Baku-Start!'),
     60,
     true
   );
@@ -26,7 +28,7 @@ export function LandingPage() {
             w-full max-w-4xl px-2 leading-tight
           `}
         >
-          Welcome to My Portfolio
+          WELCOME TO MY PORTFOLIO
         </h1>
 
         {/* Typing Effect (UPDATE NEW MODEL) */}
@@ -37,12 +39,12 @@ export function LandingPage() {
           </p>
         </div>
 
-        {/* --- LINHA DIVISÓRIA (HR) DEGRADÊ --- */}
+        {/* --- DIVIDER LINE --- */}
         <div className="w-full max-w-md my-2 flex items-center justify-center">
           <hr className="w-full border-0 h-px bg-linear-to-r from-transparent via-(--cyan-primary) to-transparent opacity-60 shadow-[0_0_10px_var(--cyan-primary)]" />
         </div>
 
-        {/* --- LINKS INTERATIVOS --- */}
+        {/* --- INTERACTIVE LINKS --- */}
         <nav className="flex flex-wrap items-center justify-center gap-8 text-base md:text-lg font-medium text-zinc-300">
           <a
             href="#about"
@@ -51,8 +53,8 @@ export function LandingPage() {
             <span className="text-(--cyan-primary) font-mono mr-1 text-xs opacity-70 group-hover:opacity-100">
               01.
             </span>
-                ABOUT
-            {/* Animação da barrinha surgindo embaixo no Hover */}
+                {t("ABOUT", 'SOBRE')}
+            {/* Animation of the small bar appearing at the bottom on hover. */}
             <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-(--cyan-primary) transition-all duration-300 group-hover:w-full shadow-[0_0_8px_var(--cyan-primary)]" />
           </a>
 
@@ -63,7 +65,7 @@ export function LandingPage() {
             <span className="text-(--cyan-primary) font-mono mr-1 text-xs opacity-70 group-hover:opacity-100">
               02.
             </span>
-                PROJECTS
+                {t("PROJECTS", 'PROJETOS')}
             <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-(--cyan-primary) transition-all duration-300 group-hover:w-full shadow-[0_0_8px_var(--cyan-primary)]" />
           </a>
 
@@ -74,7 +76,7 @@ export function LandingPage() {
             <span className="text-(--cyan-primary) font-mono mr-1 text-xs opacity-70 group-hover:opacity-100">
               03.
             </span>
-                EXPERIENCES
+                {t("EXPERIENCES", 'EXPERIENCIAS')}
             <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-(--cyan-primary) transition-all duration-300 group-hover:w-full shadow-[0_0_8px_var(--cyan-primary)]" />
           </a>
         </nav>
