@@ -1,6 +1,9 @@
 import { educationData } from '../data/educationData';
+import { useLanguage } from '../context/LanguageContext';
 
 export function Education() {
+  const { language, t } = useLanguage();
+
   return (
     <section 
       id="education" 
@@ -9,10 +12,10 @@ export function Education() {
       {/* SECTION HEADER */}
       <div className="flex flex-col items-center gap-2 mb-16 text-center">
         <span className="text-(--cyan-primary) font-mono text-sm tracking-widest uppercase">
-          EXTRA. Education & Certifications
+          {t('04. Education & Certifications', '04. Formação & Certificações')}
         </span>
         <h2 className="text-3xl md:text-5xl tracking-wide">
-          Education
+          {t('Education', 'Educação')}
         </h2>
         {/* Divider */}
         <div className="w-16 h-[2px] bg-(--cyan-primary) shadow-[0_0_10px_var(--cyan-primary)] mt-2" />
@@ -32,7 +35,7 @@ export function Education() {
                   {edu.type}
                 </span>
                 <h3 className="text-xl md:text-2xl font-semibold text-white group-hover:text-(--cyan-primary) transition-colors">
-                  {edu.degree}
+                  {edu.degree[language]}
                 </h3>
                 <p className="text-zinc-400 font-medium text-sm mt-1">
                   {edu.institution} {edu.location && `• ${edu.location}`}
@@ -45,7 +48,7 @@ export function Education() {
 
             {/* Descrição */}
             <ul className="space-y-2.5 my-5 text-zinc-300 text-sm md:text-base">
-              {edu.description.map((item, idx) => (
+              {edu.description[language].map((item, idx) => (
                 <li key={idx} className="flex items-start gap-3 leading-relaxed">
                   <span className="text-(--cyan-primary) font-mono mt-0.5">›</span>
                   <span>{item}</span>
