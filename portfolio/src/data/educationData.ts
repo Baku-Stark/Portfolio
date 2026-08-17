@@ -153,7 +153,7 @@ export const educationData: EducationItem[] = [
     id: 'edu-cisco-ethical-hacker',
     degree: {
       en: 'Ethical Hacker',
-      pt: 'Hacker Ético (Ethical Hacker)'
+      pt: 'Hacker Etico'
     },
     institution: 'Cisco Networking Academy',
     period: '2024 / 2025',
